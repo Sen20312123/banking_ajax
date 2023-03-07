@@ -42,6 +42,7 @@ function renderCustomer() {
         `
     })
     document.getElementById("tbcustomer").innerHTML = htmls.join("");
+  
 }
 
 function findMaxId() {
@@ -82,6 +83,8 @@ function addCustomer() {
     renderCustomer();
     resetForm();
 }
+
+
 
 function resetForm() {
     document.querySelector("#fullName").value = "";
@@ -203,11 +206,12 @@ function showRemove(customerid) {
 }
 
 function remove(customerid){
-        let position = customers.findIndex(function (customer) {
-            return customer.id == customerid;
-        })
-        customers.splice(position, 1);
+  for(let i = 0; i < customers.length; i++){
+    if (customers[i].id == customerid) {
+        customers.splice(i, 1);
         renderCustomer();
+    }
+}
 }
 
 function ready() {
